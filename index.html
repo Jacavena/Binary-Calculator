@@ -28,15 +28,15 @@
             <th>1</th>
           </tr>
           <tr class="binaryInput">
-            <td><button>0</button></td>
-            <td><button>0</button></td>
-            <td><button>0</button></td>
-            <td><button>0</button></td>
-            <td><button>0</button></td>
-            <td><button>0</button></td>
-            <td><button>0</button></td>
-            <td><button>0</button></td>
-            <td><button>0</button></td>
+            <td><button id="256" onClick="toggle(256); concatBin();">0</button></td>
+            <td><button id="128" onClick="toggle(128); concatBin();">0</button></td>
+            <td><button id="64" onClick="toggle(64); concatBin();">0</button></td>
+            <td><button id="32" onClick="toggle(32); concatBin();">0</button></td>
+            <td><button id="16" onClick="toggle(16); concatBin();">0</button></td>
+            <td><button id="8" onClick="toggle(8); concatBin();">0</button></td>
+            <td><button id="4" onClick="toggle(4); concatBin();">0</button></td>
+            <td><button id="2" onClick="toggle(2); concatBin();">0</button></td>
+            <td><button id="1" onClick="toggle(1); concatBin();">0</button></td>
           </tr>
         </table>
       </td>
@@ -46,8 +46,8 @@
     </tr>
     <tr>
       <td width=10%>Base</td>
-      <td></td>
-      <td></td>
+      <td id="baseBinary"></td>
+      <td id="baseDecimal"></td>
     </tr>
     <tr>
       <td>Addition</td>
