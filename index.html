@@ -5,8 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Binary Calculator</title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  
+  <table id="calculator">
+    <tr>
+      <th id="heading" colspan=4>Binary Calculator</th>
+    </tr>
+    <tr>
+      <td width=40% rowspan="6">
+        <table id="binary">
+          <tr>
+            <th>256</th>
+            <th>128</th>
+            <th>64</th>
+            <th>32</th>
+            <th>16</th>
+            <th>8</th>
+            <th>4</th>
+            <th>2</th>
+            <th>1</th>
+          </tr>
+          <tr class="binaryInput">
+            <td><button>0</button></td>
+            <td><button>0</button></td>
+            <td><button>0</button></td>
+            <td><button>0</button></td>
+            <td><button>0</button></td>
+            <td><button>0</button></td>
+            <td><button>0</button></td>
+            <td><button>0</button></td>
+            <td><button>0</button></td>
+          </tr>
+        </table>
+      </td>
+      <td></td>
+      <td width=25%>Binary</td>
+      <td width=25%>Decimal</td>
+    </tr>
+    <tr>
+      <td width=10%>Base</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Addition</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Subtraction</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Multiplication</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Division</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <script src="main.js"></script>
 </body>
 </html>
