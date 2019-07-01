@@ -11,10 +11,10 @@
 <body>
   <table id="calculator">
     <tr>
-      <th id="heading" colspan=4>Binary Calculator</th>
+      <th id="heading" colspan=6>Binary Calculator</th>
     </tr>
     <tr>
-      <td width=40% rowspan="6">
+      <td width=40% rowspan="3">
         <table id="binary">
           <tr>
             <th>256</th>
@@ -27,47 +27,75 @@
             <th>2</th>
             <th>1</th>
           </tr>
-          <tr class="binaryInput">
-            <td><button id="256" onClick="toggle(256); concatBin();">0</button></td>
-            <td><button id="128" onClick="toggle(128); concatBin();">0</button></td>
-            <td><button id="64" onClick="toggle(64); concatBin();">0</button></td>
-            <td><button id="32" onClick="toggle(32); concatBin();">0</button></td>
-            <td><button id="16" onClick="toggle(16); concatBin();">0</button></td>
-            <td><button id="8" onClick="toggle(8); concatBin();">0</button></td>
-            <td><button id="4" onClick="toggle(4); concatBin();">0</button></td>
-            <td><button id="2" onClick="toggle(2); concatBin();">0</button></td>
-            <td><button id="1" onClick="toggle(1); concatBin();">0</button></td>
+          <tr class="binaryInput1">
+            <td><button id="1256" onClick="toggle(1256);">0</button></td>
+            <td><button id="1128" onClick="toggle(1128);">0</button></td>
+            <td><button id="164" onClick="toggle(164);">0</button></td>
+            <td><button id="132" onClick="toggle(132);">0</button></td>
+            <td><button id="116" onClick="toggle(116);">0</button></td>
+            <td><button id="18" onClick="toggle(18);">0</button></td>
+            <td><button id="14" onClick="toggle(14);">0</button></td>
+            <td><button id="12" onClick="toggle(12);">0</button></td>
+            <td><button id="11" onClick="toggle(11);">0</button></td>
           </tr>
         </table>
       </td>
       <td></td>
-      <td width=25%>Binary</td>
-      <td width=25%>Decimal</td>
+      <td colspan=2 width=25% style="text-align: center">Binary</td>
+      <td colspan=2 width=25% style="text-align: center">Decimal</td>
     </tr>
     <tr>
       <td width=10%>Base</td>
-      <td id="baseBinary"></td>
-      <td id="baseDecimal"></td>
+      <td id="baseBinary1" width=12.5%></td>
+      <td id="baseBinary2" width=12.5%></td>
+      <td id="baseDecimal1" width=12.5%></td>
+      <td id="baseDecimal2" width=12.5%></td>
     </tr>
     <tr>
       <td>Addition</td>
-      <td></td>
-      <td></td>
+      <td colspan=2 id="addBinary"></td>
+      <td colspan=2 id="addDecimal"></td>
     </tr>
     <tr>
+        <td width=40% rowspan="3">
+            <table id="binary">
+              <tr>
+                <th>256</th>
+                <th>128</th>
+                <th>64</th>
+                <th>32</th>
+                <th>16</th>
+                <th>8</th>
+                <th>4</th>
+                <th>2</th>
+                <th>1</th>
+              </tr>
+              <tr class="binaryInput2">
+                <td><button id="2256" onClick="toggle(2256);">0</button></td>
+                <td><button id="2128" onClick="toggle(2128);">0</button></td>
+                <td><button id="264" onClick="toggle(264);">0</button></td>
+                <td><button id="232" onClick="toggle(232);">0</button></td>
+                <td><button id="216" onClick="toggle(216);">0</button></td>
+                <td><button id="28" onClick="toggle(28);">0</button></td>
+                <td><button id="24" onClick="toggle(24);">0</button></td>
+                <td><button id="22" onClick="toggle(22);">0</button></td>
+                <td><button id="21" onClick="toggle(21);">0</button></td>
+              </tr>
+            </table>
+          </td>
       <td>Subtraction</td>
-      <td></td>
-      <td></td>
+      <td colspan=2 id="subBinary"></td>
+      <td colspan=2 id="subDecimal"></td>
     </tr>
     <tr>
       <td>Multiplication</td>
-      <td></td>
-      <td></td>
+      <td colspan=2 id="multBinary"></td>
+      <td colspan=2 id="multDecimal"></td>
     </tr>
     <tr>
       <td>Division</td>
-      <td></td>
-      <td></td>
+      <td colspan=2 id="divBinary"></td>
+      <td colspan=2 id="divDecimal"></td>
     </tr>
   </table>
   <script src="main.js"></script>
