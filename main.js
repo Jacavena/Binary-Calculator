@@ -20,6 +20,7 @@ let concatBin = () => { // Concatenate Binary
   baseBinary2.textContent = binary2;
   bin2Dec(); // Convert to Decimal
   addBin(); // Perform Addition
+  subBin(); // Subtract Binary
 }
 
 let bin2Dec = () => { // Binary to Decimal Conversion
@@ -58,7 +59,7 @@ let opDec = (operator) => {
   document.getElementById(id).textContent = ansDec;
 }
 
-let addBin = () => {
+let addBin = () => { // Binary Addition
   let binary1 = baseBinary1.textContent;
   let binary2 = baseBinary2.textContent;
   let arrBin1 = binary1.split('');
@@ -73,11 +74,11 @@ let addBin = () => {
     if(sum == 3) {arrBin1[i-1] = Number(arrBin1[i-1]) + 1; sum = 1;}
     sumBin.unshift(sum);
   }
-  document.getElementById("addBinary").textContent = sumBin.join('');
-  subBin(); // Subtract Binary
+  sumBin = sumBin.join('')
+  document.getElementById("addBinary").textContent = parseInt(sumBin, 10)
 }
 
-let subBin = () => {
+let subBin = () => { // Binary Subtraction
   let bin1 = baseBinary1.textContent.split('');
   let bin2 = baseBinary2.textContent.split('');
   let check = checkHigher(bin1, bin2);
@@ -91,7 +92,8 @@ let subBin = () => {
     diffBin = subOperation(bin2, bin1);
     diffBin.unshift('-');
   }
-  document.getElementById('subBinary').textContent = diffBin.join('');
+  diffBin = diffBin.join('');
+  document.getElementById('subBinary').textContent = parseInt(diffBin, 10);
   multBin(); // Multiply Binary
 }
 
@@ -107,8 +109,46 @@ let subOperation = (arr1, arr2) => {
 }
 
 let multBin = () => {
-  let bin1 = baseBinary1.textContent.replace(/^0+/,'');
-  let bin2 = baseBinary2.textContent.replace(/^0+/,'');
+  let bin1 = baseBinary1.textContent.replace(/^0+/,'') == ''?
+    '0':baseBinary1.textContent.replace(/^0+/,'');
+  let bin2 = baseBinary2.textContent.replace(/^0+/,'') == ''?
+    '0':baseBinary2.textContent.replace(/^0+/,'');
+  console.log(bin1 + ' / ' + bin2);
+  bin2 = bin2.split('');
+  let sums = [];
+  let zeros = 0;
+  for(let i = bin2.length - 1; i >= 0; i--) {
+    sums.push(Number((bin2[i]) * bin1)+'0'.repeat(zeros));
+    zeros++;
+  }
+  sums = equalSize(sums);
+  console.log(sums);
+}
+
+let getHighestLength = (arr) => {
+  let highest = 0;
+  for (let i in arr) {
+    if(arr[i].length > highest) highest = arr[i].length;
+  }
+  return highest;
+}
+
+let equalSize = (arr) => {
+  highest = getHighestLength(arr);
+  for(let i in arr) {
+    while (arr[i].length < highest) {
+      arr[i] = '0' + arr[i];
+    }
+  }
+  arr = cleansing(arr);
+  return arr;
+}
+
+let cleansing = (arr) => {
+  arr = arr.filter(str => {
+    return /[1-9]/.test(str);
+  });
+  return arr;
 }
 
 let divBin = () => {
