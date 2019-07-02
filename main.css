@@ -61,3 +61,12 @@ button:active {
   background-color: #fed5fe;
   color: #111;
 }
+
+.allButtons {
+  width: 50%;
+}
+
+.all {
+  margin: 10px 10%;
+  font-size: 1.5em;
+}
