@@ -1,5 +1,4 @@
 
-
 let concatBin = () => { // Concatenate Binary
   let baseBinary1 = document.getElementById("baseBinary1");
   let baseBinary2 = document.getElementById("baseBinary2");
@@ -28,7 +27,8 @@ let concatBin = () => { // Concatenate Binary
   document.getElementById('multBinary').textContent = multBin(
     baseBinary1.textContent, baseBinary2.textContent);
   // Division Binary
-  divBin(baseBinary1.textContent, baseBinary2.textContent);
+  document.getElementById('divBinary').textContent = divBin(
+    baseBinary1.textContent, baseBinary2.textContent);
 }
 
 let bin2Dec = () => { // Binary to Decimal Conversion
@@ -175,9 +175,34 @@ let cleansing = (arr) => {
 let divBin = (b1, b2) => {
   let dividend = parseInt(b1, 10);
   let divisor = parseInt(b2, 10);
-  let quotient = 0;
-  console.log(dividend, divisor)
-  if(b1 == b2 && b2 != 0){ return 1 }
+  let quotient = '';
+  if(divisor == 0 && dividend == 0) return "NaN";
+  if(divisor == 0 && dividend > 0) return "Infinity";
+  if(divisor > dividend) return "0 R " + divisor;
+  if(dividend == divisor && divisor != 0) return 1;
+  dividend = String(dividend).split('');
+  console.log(dividend, divisor);
+  let toTest = '', i = dividend.length, remainder = '0';
+  while (i >= 0) {
+    console.log(dividend)
+    if(Number(toTest) < Number(divisor)) {
+      toTest += dividend.shift();
+      quotient = quotient + '0';
+    }
+    else {
+      quotient = quotient + '1';
+      divisor = String(divisor);
+      while(toTest.length > divisor.length) {divisor = '0' + divisor;}
+      console.log(toTest, divisor);
+      remainder = subBin(String(toTest), String(divisor));
+      toTest = String(remainder);
+      toTest += dividend.shift();
+      divisor = String(divisor).replace(/^0+/, '');
+    }
+    i--;
+  }
+  quotient = String(parseInt(quotient, 10));
+  return remainder == 0 ? quotient: quotient + " R " + remainder;
 }
 
 let checkHigher = (arr1, arr2) => {
