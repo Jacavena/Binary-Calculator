@@ -1,9 +1,8 @@
-let baseBinary1 = document.getElementById("baseBinary1");
-let baseBinary2 = document.getElementById("baseBinary2");
-let baseDecimal1 = document.getElementById("baseDecimal1");
-let baseDecimal2 = document.getElementById("baseDecimal2");
+
 
 let concatBin = () => { // Concatenate Binary
+  let baseBinary1 = document.getElementById("baseBinary1");
+  let baseBinary2 = document.getElementById("baseBinary2");
   //Input 1
   let binary1 = ""
   let dir1 = document.querySelectorAll('.binaryInput1 button');
@@ -19,11 +18,14 @@ let concatBin = () => { // Concatenate Binary
   }
   baseBinary2.textContent = binary2;
   bin2Dec(); // Convert to Decimal
-  addBin(); // Perform Addition
+  document.getElementById("addBinary").textContent = addBin(
+    baseBinary1.textContent, baseBinary2.textContent); // Addition
   subBin(); // Subtract Binary
 }
 
 let bin2Dec = () => { // Binary to Decimal Conversion
+  let baseDecimal1 = document.getElementById("baseDecimal1");
+  let baseDecimal2 = document.getElementById("baseDecimal2");
   // Input 1
   let binary1 = baseBinary1.textContent;
   let arr1 = binary1.split('');
@@ -59,12 +61,11 @@ let opDec = (operator) => {
   document.getElementById(id).textContent = ansDec;
 }
 
-let addBin = () => { // Binary Addition
-  let binary1 = baseBinary1.textContent;
-  let binary2 = baseBinary2.textContent;
-  let arrBin1 = binary1.split('');
+let addBin = (binar1, binar2) => { // Binary Addition
+  if(binar2 == undefined) {return binar1;}
+  let arrBin1 = binar1.split('');
   arrBin1.unshift('0');
-  let arrBin2 = binary2.split('');
+  let arrBin2 = binar2.split('');
   arrBin2.unshift('0');
   let sumBin = [];
   for (let i = arrBin1.length-1; i >=0; i--) {
@@ -75,7 +76,7 @@ let addBin = () => { // Binary Addition
     sumBin.unshift(sum);
   }
   sumBin = sumBin.join('')
-  document.getElementById("addBinary").textContent = parseInt(sumBin, 10)
+  return sumBin
 }
 
 let subBin = () => { // Binary Subtraction
@@ -109,11 +110,12 @@ let subOperation = (arr1, arr2) => {
 }
 
 let multBin = () => {
-  let bin1 = baseBinary1.textContent.replace(/^0+/,'') == ''?
-    '0':baseBinary1.textContent.replace(/^0+/,'');
-  let bin2 = baseBinary2.textContent.replace(/^0+/,'') == ''?
-    '0':baseBinary2.textContent.replace(/^0+/,'');
-  console.log(bin1 + ' / ' + bin2);
+  let bin1 = String(parseInt(baseBinary1.textContent, 10));
+  let bin2 = String(parseInt(baseBinary2.textContent, 10));
+  if(bin1 == '0' || bin2 == '0') {
+    document.getElementById('multBinary').textContent = '0';
+    return;
+  }
   bin2 = bin2.split('');
   let sums = [];
   let zeros = 0;
@@ -121,8 +123,17 @@ let multBin = () => {
     sums.push(Number((bin2[i]) * bin1)+'0'.repeat(zeros));
     zeros++;
   }
-  sums = equalSize(sums);
-  console.log(sums);
+  let temp = 0;
+  while (sums.length != 1) {
+    sums = equalSize(sums);
+    temp = addBin(String(sums[0]), String(sums[1]));
+    sums = sums.slice(2);
+    sums.push(String(temp));
+  }
+  let product = sums[0];
+  product = product.replace(/^0+/, '').length == 0? 0:
+    product.replace(/^0+/, '');
+  document.getElementById('multBinary').textContent = product;
 }
 
 let getHighestLength = (arr) => {
@@ -137,7 +148,7 @@ let equalSize = (arr) => {
   highest = getHighestLength(arr);
   for(let i in arr) {
     while (arr[i].length < highest) {
-      arr[i] = '0' + arr[i];
+      arr[i] = '0' + String(arr[i]);
     }
   }
   arr = cleansing(arr);
