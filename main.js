@@ -1,5 +1,5 @@
 
-let concatBin = () => { // Concatenate Binary
+const concatBin = () => { // Concatenate Binary
   let baseBinary1 = document.getElementById("baseBinary1");
   let baseBinary2 = document.getElementById("baseBinary2");
   //Input 1
@@ -31,7 +31,7 @@ let concatBin = () => { // Concatenate Binary
     baseBinary1.textContent, baseBinary2.textContent);
 }
 
-let bin2Dec = () => { // Binary to Decimal Conversion
+const bin2Dec = () => { // Binary to Decimal Conversion
   let baseDecimal1 = document.getElementById("baseDecimal1");
   let baseDecimal2 = document.getElementById("baseDecimal2");
   // Input 1
@@ -56,7 +56,7 @@ let bin2Dec = () => { // Binary to Decimal Conversion
   opDec('div'); // Perform Division
 }
 
-let opDec = (operator) => {
+const opDec = (operator) => {
   let baseDec1 = operator == 'div' ? parseFloat(baseDecimal1.textContent): 
     Number(baseDecimal1.textContent);
   let baseDec2 = operator == 'div' ? parseFloat(baseDecimal2.textContent):
@@ -69,7 +69,7 @@ let opDec = (operator) => {
   document.getElementById(id).textContent = ansDec;
 }
 
-let addBin = (binar1, binar2) => { // Binary Addition
+const addBin = (binar1, binar2) => { // Binary Addition
   if(binar2 == undefined) {return binar1;}
   let arrBin1 = binar1.split('');
   arrBin1.unshift('0');
@@ -87,7 +87,7 @@ let addBin = (binar1, binar2) => { // Binary Addition
   return sumBin
 }
 
-let subBin = (num1, num2) => { // Binary Subtraction
+const subBin = (num1, num2) => { // Binary Subtraction
   let bin1 = num1.split('');
   let bin2 = num2.split('');
   let check = checkHigher(bin1, bin2);
@@ -105,7 +105,7 @@ let subBin = (num1, num2) => { // Binary Subtraction
   return parseInt(diffBin, 10);
 }
 
-let subOperation = (arr1, arr2) => {
+const subOperation = (arr1, arr2) => {
   let arr = [];
   for(let i = arr1.length - 1; i >= 0; i--) {
     let diff = Number(arr1[i])-Number(arr2[i]);
@@ -116,7 +116,7 @@ let subOperation = (arr1, arr2) => {
   return arr;
 }
 
-let multBin = (mult1, mult2) => {
+const multBin = (mult1, mult2) => {
   let bin1 = String(parseInt(mult1, 10));
   let bin2 = String(parseInt(mult2, 10));
   if(bin1 == '0' || bin2 == '0') {
@@ -146,7 +146,7 @@ let multBin = (mult1, mult2) => {
   return product;
 }
 
-let getHighestLength = (arr) => {
+const getHighestLength = (arr) => {
   let highest = 0;
   for (let i in arr) {
     if(arr[i].length > highest) highest = arr[i].length;
@@ -154,7 +154,7 @@ let getHighestLength = (arr) => {
   return highest;
 }
 
-let equalSize = (arr) => {
+const equalSize = (arr) => {
   highest = getHighestLength(arr);
   for(let i in arr) {
     while (arr[i].length < highest) {
@@ -165,14 +165,14 @@ let equalSize = (arr) => {
   return arr;
 }
 
-let cleansing = (arr) => {
+const cleansing = (arr) => {
   arr = arr.filter(str => {
     return /[1-9]/.test(str);
   });
   return arr;
 }
 
-let divBin = (b1, b2) => {
+const divBin = (b1, b2) => {
   let dividend = parseInt(b1, 10);
   let divisor = parseInt(b2, 10);
   let quotient = '';
@@ -205,7 +205,7 @@ let divBin = (b1, b2) => {
   return remainder == 0 ? quotient: quotient + " R " + remainder;
 }
 
-let checkHigher = (arr1, arr2) => {
+const checkHigher = (arr1, arr2) => {
   for (let i in arr1) {
     if(arr1[i] > arr2[i]) return 'arr1';
     else if(arr1[i] < arr2[i]) return 'arr2';
@@ -213,7 +213,7 @@ let checkHigher = (arr1, arr2) => {
   return 'equal';
 }
 
-let toggle = (baseNum) => {
+const toggle = (baseNum) => {
   baseValue = document.getElementById(baseNum);
   if (baseValue.innerText == 0)
     baseValue.innerText = 1;
@@ -222,7 +222,7 @@ let toggle = (baseNum) => {
   concatBin();
 }
 
-let changeAll = (num) => {
+const changeAll = (num) => {
   let but1 = document.querySelectorAll('.binaryInput1 button');
   for(let i = 0; i < but1.length; i++) {
     but1[i].textContent = num;
