@@ -125,7 +125,7 @@ let multBin = (mult1, mult2) => {
   let count1 = 0, count2 = 0;
   for(let i in bin1.split('')) { if(bin1[i] == '1') count1++;}
   for(let i in bin2.split('')) { if(bin2[i] == '1') count2++;}
-  if(count1 == 1 && count2 == 1){return Number(bin1) * Number(bin2)}
+  if(count1 == 1 || count2 == 1){return Number(bin1) * Number(bin2)}
   bin2 = bin2.split('');
   let sums = [];
   let zeros = 0;
